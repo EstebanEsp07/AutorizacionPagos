@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPath": "/bank/authorize",
+    "bodyPatterns": [{ "matchesJsonPath": "$[?(@.amount == 999.99)]" }]
+  },
+  "response": {
+    "status": 200,
+    "fixedDelayMilliseconds": 7000,
+    "jsonBody": { "status": "APPROVED", "code": "00", "reference": "LATE-BANK" },
+    "headers": { "Content-Type": "application/json" }
+  }
+}

@@ -1,0 +1,41 @@
+openapi: 3.0.3
+info:
+  title: API de Autorización de Pagos
+  version: 1.0.0
+paths:
+  /api/v1/pagos/autorizar:
+    post:
+      summary: Autoriza un pago de forma idempotente
+      parameters:
+        - name: Idempotency-Key
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PagoRequest'
+      responses:
+        '200':
+          description: Pago aprobado
+        '202':
+          description: Estado pendiente de conciliación
+        '422':
+          description: Pago rechazado por validación o límites
+components:
+  schemas:
+    PagoRequest:
+      type: object
+      required: [cuenta, monto, moneda]
+      properties:
+        cuenta:
+          type: string
+        monto:
+          type: number
+          format: double
+        moneda:
+          type: string
+          example: USD

@@ -1,0 +1,16 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPath": "/bank/authorize"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "status": "APPROVED",
+      "code": "00",
+      "reference": "{{randomValue length=12 type='ALPHANUMERIC'}}"
+    },
+    "headers": { "Content-Type": "application/json" },
+    "transformers": ["response-template"]
+  }
+}
