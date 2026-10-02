@@ -59,6 +59,23 @@ cp .env.example .env
 docker compose up --build
 ```
 
+## GitHub Codespaces
+
+1. Abre el repositorio en GitHub y selecciona **Code > Codespaces > Create codespace on main**.
+2. El Codespace incluye Java 21, Maven y Docker/Compose para ejecutar el entorno local.
+3. Durante la creación del Codespace se copia `.env.example` a `.env` solo si `.env` no existe.
+4. Para iniciar los servicios desde la raíz del repo:
+
+```bash
+docker compose up --build
+```
+
+Si necesitas regenerar el archivo de entorno manualmente:
+
+```bash
+cp .env.example .env
+```
+
 Swagger:
 `http://localhost:8080/swagger-ui.html`
 
