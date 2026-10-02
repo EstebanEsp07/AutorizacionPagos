@@ -1,0 +1,36 @@
+{
+  "name": "AutorizacionPagos Codespace",
+  "image": "mcr.microsoft.com/devcontainers/java:1-21-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+  },
+  "forwardPorts": [
+    8080,
+    8081,
+    15672
+  ],
+  "portsAttributes": {
+    "8080": {
+      "label": "Backend Spring Boot (API)",
+      "onAutoForward": "notify"
+    },
+    "8081": {
+      "label": "WireMock bank-mock",
+      "onAutoForward": "silent"
+    },
+    "15672": {
+      "label": "RabbitMQ Management UI",
+      "onAutoForward": "silent"
+    }
+  },
+  "postCreateCommand": "sh -c '[ -f .env ] || cp .env.example .env'",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "redhat.java",
+        "vscjava.vscode-maven",
+        "vmware.vscode-spring-boot"
+      ]
+    }
+  }
+}
